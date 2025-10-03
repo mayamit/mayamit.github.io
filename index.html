@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amit Gandhi — Technology Leadership & Intelligent Platforms</title>
+  <meta name="description" content="Strategic technology leadership across Cloud, Data, AI, and Platform Engineering. Roadmaps that move from vision to value." />
+  <meta name="theme-color" content="#0f172a" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Technology Leadership & Intelligent Platforms" />
+  <meta property="og:description" content="Roadmaps that move from vision to value." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root{
+      --bg: #0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e2e8f0; --accent:#22d3ee; --line:#1e293b;
+      --bg-light:#ffffff; --card-light:#f8fafc; --muted-light:#64748b; --text-light:#0f172a; --line-light:#e2e8f0;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      background:var(--bg); color:var(--text);
+      transition:background .2s,color .2s;
+    }
+    .light body{background:var(--bg-light); color:var(--text-light)}
+    header{
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(8px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--line);
+    }
+    .light header{ background:color-mix(in oklab, var(--bg-light) 85%, transparent); border-color:var(--line-light) }
+    .wrap{max-width:1100px; margin:auto; padding:14px 20px}
+    .nav{display:flex; align-items:center; gap:16px; justify-content:space-between}
+    .brand{font-weight:700; letter-spacing:.3px}
+    nav a{color:inherit; text-decoration:none; padding:8px 10px; border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,.06)}
+    .light nav a:hover{background:rgba(15,23,42,.06)}
+    .hero{
+      padding:70px 20px 40px; border-bottom:1px solid var(--line);
+      background: radial-gradient(900px 400px at 20% 0%, rgba(34,211,238,.08), transparent),
+                  radial-gradient(700px 300px at 80% 10%, rgba(56,189,248,.08), transparent);
+    }
+    .light .hero{ border-color:var(--line-light); background: radial-gradient(900px 400px at 20% 0%, rgba(34,211,238,.12), transparent) }
+    .kicker{color:var(--muted); text-transform:uppercase; font-size:.85rem; letter-spacing:.18em}
+    h1{font-size:clamp(28px, 3vw + 12px, 44px); line-height:1.15; margin:.4rem 0 1rem}
+    .sub{color:var(--muted); max-width:740px; font-size:1.05rem}
+    .cta{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+    .btn{
+      border:1px solid color-mix(in oklab, var(--accent) 55%, #fff 0%); background:transparent; color:inherit;
+      padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600
+    }
+    .btn.accent{background:var(--accent); color:#05202b; border-color:transparent}
+    .grid{display:grid; gap:16px}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.cols-3{grid-template-columns:1fr}}
+    .card{
+      background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; transition:transform .2s, border-color .2s;
+    }
+    .light .card{background:var(--card-light); border-color:var(--line-light)}
+    .card:hover{transform:translateY(-2px); border-color:color-mix(in oklab, var(--accent) 60%, transparent)}
+    h2{margin:30px 0 10px; font-size:1.6rem}
+    h3{margin:0 0 6px; font-size:1.05rem}
+    .muted{color:var(--muted)}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--line); font-size:.85rem}
+    .light .pill{border-color:var(--line-light)}
+    .section{padding:34px 20px}
+    .row{display:flex; gap:16px; flex-wrap:wrap}
+    .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    @media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+    .kpi{padding:14px 16px; border:1px dashed var(--line); border-radius:14px}
+    footer{padding:28px 20px; border-top:1px solid var(--line); color:var(--muted)}
+    .light footer{border-color:var(--line-light)}
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease}
+    .reveal.in{opacity:1; transform:none}
+    /* Toggle */
+    .toggle{display:inline-flex; gap:8px; align-items:center; border:1px solid var(--line); padding:8px 10px; border-radius:12px; cursor:pointer}
+    .light .toggle{border-color:var(--line-light)}
+    .icon{width:18px; height:18px; vertical-align:-3px}
+    /* Anchor focus */
+    a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:10px}
+    /* Tiny tag */
+    .tag{font-size:.78rem; color:var(--muted)}
+  </style>
+  <script>
+    // theme persistence
+    const apply = (m)=>{ document.documentElement.classList.toggle('light', m==='light'); };
+    const saved = localStorage.getItem('theme'); if(saved) apply(saved);
+    addEventListener('DOMContentLoaded', ()=>{
+      // reveal on scroll
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+      },{threshold:.1});
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      // toggle
+      const t = document.getElementById('themeToggle');
+      t?.addEventListener('click',()=>{
+        const next = document.documentElement.classList.contains('light') ? 'dark':'light';
+        apply(next); localStorage.setItem('theme', next);
+      });
+    });
+  </script>
+  <!-- Minimal Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Amit Gandhi",
+    "jobTitle":"Technology Leader",
+    "knowsAbout":["Cloud","Data Engineering","AI/ML","Platform Engineering"],
+    "url":"https://example.github.io"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Amit Gandhi</div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#work">Work</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="themeToggle" class="toggle" aria-label="Toggle theme">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-5a1 1 0 0 1 1 1v0a1 1 0 1 1-2 0v0a1 1 0 0 1 1-1ZM4 12a1 1 0 0 1 1 1v0a1 1 0 1 1-2 0v0a1 1 0 0 1 1-1Zm13.657-6.657a1 1 0 0 1 1.414 1.414L17.657 8.17a1 1 0 1 1-1.414-1.415l1.414-1.414ZM7.757 15.07a1 1 0 0 1 1.415 1.414L7.758 17.9a1 1 0 1 1-1.415-1.414l1.414-1.414Zm10.607 4.95a1 1 0 0 1-1.414 1.414l-1.414-1.414A1 1 0 1 1 16.95 18.6l1.414 1.415ZM6.343 4.929A1 1 0 1 1 7.757 3.515L9.17 4.93A1 1 0 1 1 7.756 6.343L6.343 4.93Z" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span class="tag">Theme</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker">From Strategy to Runway Value</div>
+      <h1>Building cloud-native, data-driven, AI-powered systems that scale with the business.</h1>
+      <p class="sub">I partner with enterprises to operationalize modern engineering—linking roadmaps to measurable outcomes across Cloud, Data, and Intelligent Applications.</p>
+      <div class="cta">
+        <a class="btn accent" href="#contact">Engage</a>
+        <a class="btn" href="#work">View Work</a>
+      </div>
+      <div class="kpis reveal" style="margin-top:24px">
+        <div class="kpi"><div class="muted">Cloud Migrations</div><strong>50+ apps</strong></div>
+        <div class="kpi"><div class="muted">Data Pipelines</div><strong>200+ prod</strong></div>
+        <div class="kpi"><div class="muted">AI Use-Cases</div><strong>25 live</strong></div>
+        <div class="kpi"><div class="muted">Uptime</div><strong>99.9%</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="wrap">
+      <h2 class="reveal">Operating Model</h2>
+      <p class="muted reveal">Discovery to value in defined increments. Architecture reviews, platform baselining, delivery guardrails, and an observability-first posture. The result: predictable throughput and faster time-to-impact.</p>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="card reveal">
+          <h3>Strategy → Roadmap</h3>
+          <p class="muted">Prioritized investments across Cloud, Data, and AI with defined KPIs and governance constructs.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Build → Ship</h3>
+          <p class="muted">Product-grade engineering with CI/CD, test automation, and secure SDLC as first principles.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Run → Optimize</h3>
+          <p class="muted">SRE-aligned runbooks, cost hygiene, and feedback loops to continuously lift reliability and velocity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pillars" class="section">
+    <div class="wrap">
+      <h2 class="reveal">Execution Pillars</h2>
+      <div class="row">
+        <span class="pill reveal">Cloud Platforms</span>
+        <span class="pill reveal">Data Engineering</span>
+        <span class="pill reveal">AI & GenAI</span>
+        <span class="pill reveal">DevSecOps</span>
+        <span class="pill reveal">SRE & Observability</span>
+        <span class="pill reveal">Platform Ops</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <div class="wrap">
+      <h2 class="reveal">Selected Work</h2>
+      <div class="grid cols-3">
+        <article class="card reveal">
+          <div class="tag">Healthcare • Data Platform</div>
+          <h3>Unified data fabric for outcomes analytics</h3>
+          <p class="muted">Consolidated siloed sources into a governed lakehouse; standardized KPIs, reduced time-to-insight from weeks to hours.</p>
+        </article>
+        <article class="card reveal">
+          <div class="tag">Manufacturing • AI</div>
+          <h3>Predictive quality and parts forecasting</h3>
+          <p class="muted">Deployed ML to cut defects and optimize spares; integrated into plant apps via APIs for closed-loop actioning.</p>
+        </article>
+        <article class="card reveal">
+          <div class="tag">Education • Platforms</div>
+          <h3>Modernized learning delivery at scale</h3>
+          <p class="muted">Refactored monoliths to modular services, enabling faster releases and improved learner experience.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights" class="section">
+    <div class="wrap">
+      <h2 class="reveal">Recent Insights</h2>
+      <div class="grid cols-3">
+        <div class="card reveal">
+          <h3>AI beyond the demo</h3>
+          <p class="muted">A framework to move from proofs to production: data readiness, guardrails, evaluation, and ops.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Cloud cost ≠ business value</h3>
+          <p class="muted">Rightsizing that ties cost to service levels, not just VM counts—using SLOs and usage telemetry.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Shipping safely, weekly</h3>
+          <p class="muted">Branching simplicity, automated tests, and golden paths to raise throughput, not chaos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="wrap">
+      <h2 class="reveal">Contact</h2>
+      <p class="muted reveal">For advisory, platform modernization, or AI implementation discussions:</p>
+      <div class="card reveal">
+        <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© <span id="y"></span> Amit Gandhi · Built for GitHub Pages</div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
