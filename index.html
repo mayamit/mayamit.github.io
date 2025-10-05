@@ -1,104 +1,147 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Webhook Form — Demo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amit Gandhi — CTO | Executive Technologist</title>
   <style>
-    :root{--bg:#0b1220;--card:#0f172a;--text:#e2e8f0;--muted:#94a3b8;--accent:#22d3ee;--line:#1e293b}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
-    .wrap{max-width:720px;margin:40px auto;padding:0 20px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-    h1{margin:.2rem 0 1rem}
-    label{display:block;margin:.6rem 0 .25rem;color:var(--muted)}
-    input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0b1325;color:var(--text)}
-    button{margin-top:12px;padding:10px 14px;border-radius:12px;border:1px solid transparent;background:var(--accent);color:#05202b;font-weight:700;cursor:pointer}
-    .hint{color:var(--muted);font-size:.9rem;margin-top:10px}
-    .ok{border-color:#1f6f3b}
-    .err{border-color:#7f1d1d}
-    .status{margin-top:10px;font-size:.95rem}
-    code{background:#09101d;border:1px solid var(--line);padding:2px 6px;border-radius:8px}
+    :root {
+      --bg: #0b1220; --text: #e2e8f0; --muted: #94a3b8; --accent: #22d3ee; --card: #0f172a; --line: #1e293b;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 60px auto 40px;
+      padding: 0 20px;
+      gap: 40px;
+    }
+    header img {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+    .intro {
+      flex: 1;
+      min-width: 300px;
+    }
+    .intro h1 {
+      margin: 0 0 10px;
+      font-size: 2.2rem;
+    }
+    .intro h2 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .intro p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-top: 12px;
+    }
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    h2 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-top: 0;
+    }
+    .form-card {
+      background: #0d172b;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      padding: 24px;
+      margin-top: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #0b1325;
+      color: var(--text);
+    }
+    button {
+      background: var(--accent);
+      color: #05202b;
+      font-weight: bold;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.9; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 40px 0;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Webhook Demo (Static Page)</h1>
-    <p class="hint">Submit this form to trigger a webhook. Update the action URL to your webhook endpoint.</p>
+  <header>
+    <img src="amitgandhi_cto_hshot.jpg" alt="Amit Gandhi" />
+    <div class="intro">
+      <h1>Amit Gandhi</h1>
+      <h2>Chief Technology Officer | Executive Technologist</h2>
+      <p>As a technology leader with over two decades of global experience, I drive innovation across Cloud, Data, and AI ecosystems. My passion lies in designing scalable platforms, transforming legacy landscapes into modern digital ecosystems, and cultivating teams that bridge business strategy with technology execution.</p>
+      <p>At Parkar Digital, I partner with clients to modernize infrastructure, engineer data-driven products, and operationalize AI to deliver measurable business outcomes. My focus: turning strategic vision into tangible enterprise value.</p>
+    </div>
+  </header>
 
-    <!-- OPTION 1 (guaranteed delivery, redirects in a new tab) -->
-    <div class="card">
-      <h3>Option 1: Direct POST (opens a new tab)</h3>
-      <form
-        action="https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgA"
-        method="post"
-        target="_blank"
-      >
-        <label for="name1">Name</label>
-        <input id="name1" name="name" placeholder="Your name" required />
-        <label for="email1">Email</label>
-        <input id="email1" name="email" type="email" placeholder="you@example.com" required />
-        <!-- Extra metadata (optional) -->
-        <input type="hidden" name="source" value="github-pages-static-form" />
-        <button type="submit">Submit to Webhook</button>
-        <div class="hint">This performs a standard HTML POST. Most webhook receivers will show the payload instantly.</div>
+  <section>
+    <h2>LinkedIn Analysis Tool</h2>
+    <p>Curious about how your LinkedIn profile communicates your professional brand? This demo tool offers a quick analysis of your profile — enter your details below and trigger a webhook that processes your information in real time.</p>
+
+    <div class="form-card">
+      <form action="https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgA" method="post" target="_blank">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="linkedin">LinkedIn URL</label>
+          <input type="text" id="linkedin" name="linkedin_url" placeholder="https://linkedin.com/in/yourprofile" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <button type="submit">Analyze LinkedIn</button>
       </form>
     </div>
+  </section>
 
-    <!-- OPTION 2 (AJAX; stays on page; requires CORS allowed by receiver) -->
-    <div class="card" style="margin-top:16px">
-      <h3>Option 2: AJAX POST (stays on page)</h3>
-      <form id="ajaxForm">
-        <label for="name2">Name</label>
-        <input id="name2" name="name" placeholder="Your name" required />
-        <label for="email2">Email</label>
-        <input id="email2" name="email" type="email" placeholder="you@example.com" required />
-        <button type="submit">Submit via AJAX</button>
-        <div class="status" id="status"></div>
-        <div class="hint">Requires the webhook endpoint to allow CORS. If blocked, use Option 1.</div>
-      </form>
-    </div>
-
-    <div class="card" style="margin-top:16px">
-      <h3>Current Endpoint</h3>
-      <p> <code>https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgA</code></p>
-    </div>
-  </div>
-
-  <script>
-    const WEBHOOK_URL = "https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgA"; // same as Option 1 action
-    const form = document.getElementById('ajaxForm');
-    const status = document.getElementById('status');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      status.textContent = "Sending…";
-      const payload = {
-        name: document.getElementById('name2').value,
-        email: document.getElementById('email2').value,
-        source: 'github-pages-ajax',
-        sentAt: new Date().toISOString(),
-        userAgent: navigator.userAgent
-      };
-
-      try {
-        const res = await fetch('https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgA', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(payload),
-          mode: 'cors' // if CORS blocked, switch to 'no-cors' (opaque) or use Option 1
-        });
-        if (res.ok) {
-          status.textContent = "✅ Delivered to webhook.";
-          status.parentElement.classList.add('ok');
-        } else {
-          status.textContent = "⚠️ Endpoint responded but not OK (" + res.status + "). Try Option 1.";
-          status.parentElement.classList.add('err');
-        }
-      } catch(err) {
-        status.textContent = "❌ Browser blocked or network error. Use Option 1 (direct POST).";
-        status.parentElement.classList.add('err');
-      }
-    });
-  </script>
+  <footer>
+    &copy; 2025 Amit Gandhi | Powered by Webhooks & GitHub Pages
+  </footer>
 </body>
 </html>
