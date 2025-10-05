@@ -29,7 +29,7 @@
     <div class="card">
       <h3>Option 1: Direct POST (opens a new tab)</h3>
       <form
-        action="https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgAE"
+        action="https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgA"
         method="post"
         target="_blank"
       >
@@ -81,7 +81,7 @@
       };
 
       try {
-        const res = await fetch(WEBHOOK_URL, {
+        const res = await fetch('https://hook.relay.app/api/v1/playbook/cmfzccw7l22ov0qmbasdb3qwg/trigger/A06lYKXO7P8iP9y6FHxcgA', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(payload),
